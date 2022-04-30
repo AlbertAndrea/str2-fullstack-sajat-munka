@@ -19,6 +19,7 @@
     "eslint-plugin-promise": "^6.0.0"
   },
   "dependencies": {
-    "bluebird": "^3.7.2"
+    "bluebird": "^3.7.2",
+    "yargs": "^17.4.1"
   }
 }
