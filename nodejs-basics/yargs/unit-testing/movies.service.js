@@ -1,5 +1,5 @@
-const MovieService = (MoviesApi) => {
-  let movies = MoviesApi.get()
+const MoviesService = (moviesApi) => {
+  let movies = moviesApi.get()
 
   const getAllMovies = () => movies
 
@@ -10,19 +10,22 @@ const MovieService = (MoviesApi) => {
     return sortedMovies[sortedMovies.length - 1].id + 1
   }
 
-  const createMovie = (producer, title) => {
-    const movie = { id: generateNewMovieId(), title, producer }
+  const createMovie = ({ producer, title }) => {
+    const movie = { id: generateNewMovieId(), producer, title }
     movies = [...movies, movie]
+    moviesApi.save(movies)
     return movie
   }
 
-  const editMovie = (id, producer, title) => {
+  const editMovie = ({ id, producer, title }) => {
     movies = movies.map(movie => movie.id === id ? { id, producer, title } : movie)
+    moviesApi.save(movies)
     return findMovieById(id)
   }
 
-  const removeMovie = (id) => {
+  const removeMovie = ({ id }) => {
     movies = movies.filter(movie => movie.id !== id)
+    moviesApi.save(movies)
   }
 
   return {
@@ -34,4 +37,4 @@ const MovieService = (MoviesApi) => {
   }
 }
 
-module.exports = MovieService
+module.exports = MoviesService

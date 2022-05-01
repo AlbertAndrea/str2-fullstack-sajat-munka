@@ -2,8 +2,9 @@ const yargs = require('yargs')
 const { id, producer, title } = require('./option')
 const MoviesApi = require('./movies.api')
 const MoviesService = require('./movies.service')
+const { dbFilePath, propName } = require('./config')
 
-const moviesApi = MoviesApi('./database/movies.json', 'movies')
+const moviesApi = MoviesApi(dbFilePath, propName)
 const {
   getAllMovies,
   findMovieById,
@@ -40,12 +41,12 @@ yargs
     describe: 'Edit a movie',
     builder: { id, producer, title },
     handler: (args) => {
-      editMovie(args)
+      console.log(editMovie(args))
     }
   })
   .command({
     command: 'remove',
-    describe: 'Remove a movie by id',
+    describe: 'Remove a movie by ID',
     builder: { id },
     handler: (args) => {
       removeMovie(args.id)

@@ -2,13 +2,17 @@
     "env": {
         "commonjs": true,
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest/globals": true
     },
     "extends": [
         "standard"
     ],
+    "plugins" : [
+        "jest"
+    ]
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": 12
     },
     "rules": {
     }
