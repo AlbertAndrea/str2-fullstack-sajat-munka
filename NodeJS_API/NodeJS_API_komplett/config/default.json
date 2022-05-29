@@ -1,0 +1,7 @@
+{
+    "database": {
+        "username": "NodeUser",
+        "password": "Mkchuoq6jprSD9HN",
+        "host": "cluster0.w3xne.mongodb.net/?retryWrites=true&w=majority"
+    }
+}
